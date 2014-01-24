@@ -6,7 +6,7 @@ Sequel.migration do
   up do
     user = User.new(:email => "deleteme@phoenix.com", :first_name => "Delete", :last_name => "Me",
                     :permission => "admin", :enabled => 1)
-    user.set_password("The_Phoenix_Flies")
+    user.set_password("baja")
     user.save
   end
 
