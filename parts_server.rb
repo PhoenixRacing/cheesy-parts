@@ -1,5 +1,8 @@
-# Copyright 2012 Team 254. All Rights Reserved.
+# Copyright 2012-2013 Team 254, 2014 Phoenix Racing. All Rights Reserved.
 # @author pat@patfairbank.com (Patrick Fairbank)
+# @author nathan.lintz@students.olin.edu
+# @author patrick.varin@students.olin.edu
+# @author kevin.mcclure@students.olin.edu
 #
 # The main class of the parts management web server.
 
@@ -15,7 +18,9 @@ require "config/environment"
 require "models"
 require "wordpress_authentication"
 
-module CheesyParts
+
+
+module PhoenixParts
   class Server < Sinatra::Base
     include WordpressAuthentication
 
@@ -43,7 +48,7 @@ module CheesyParts
     def send_email(to, subject, body)
       # Run this asynchronously using EventMachine since it takes a couple of seconds.
       EM.defer do
-        Pony.mail(:from => "Cheesy Parts <#{GMAIL_USER}>", :to => to,
+        Pony.mail(:from => "Phoenix Fab <#{GMAIL_USER}>", :to => to,
                   :subject => subject, :body => body, :via => :smtp,
                   :via_options => { :address => "smtp.gmail.com", :port => "587",
                                     :enable_starttls_auto => true, :user_name => GMAIL_USER.split("@").first,

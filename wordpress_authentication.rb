@@ -10,7 +10,7 @@ require "json"
 
 require "config/environment"
 
-module CheesyParts
+module PhoenixParts
   # Helper mixin for third-party authentication using Wordpress.
   module WordpressAuthentication
     def wordpress_cookie
