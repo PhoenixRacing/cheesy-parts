@@ -21,12 +21,17 @@ end
 include Fezzik::DSL
 Fezzik.init(:tasks => "config/tasks")
 
+
+
+# FIXME: Not sure what the following should be changed to, but it should be re-branded
 set :app, "cheesy-parts"
 set :deploy_to, "/opt/team254/#{app}"
 set :release_path, "#{deploy_to}/releases/#{Time.now.strftime("%Y%m%d%H%M")}"
 set :local_path, Dir.pwd
 set :user, "ubuntu"
 
+
+# FIXME: Same thing, needs our settings
 Fezzik.destination :prod do
   # Fill in parameters for deployment host, database and e-mail account here.
   set :domain, "#{user}@parts.team254.com"

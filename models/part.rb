@@ -1,5 +1,8 @@
-# Copyright 2012 Team 254. All Rights Reserved.
+# Copyright 2012-2013 Team 254, 2014 Phoenix Racing. All Rights Reserved.
 # @author pat@patfairbank.com (Patrick Fairbank)
+# @author nathan.lintz@students.olin.edu
+# @author patrick.varin@students.olin.edu
+# @author kevin.mcclure@students.olin.edu
 #
 # Represents a single part or assembly in a project.
 
@@ -28,6 +31,13 @@ class Part < Sequel::Model
 
   # Mapping of priority integer stored in database to what is displayed to the user.
   PRIORITY_MAP = { 0 => "High", 1 => "Normal", 2 => "Low" }
+
+  
+
+
+
+### FIXME: Here is the part generation stuff, this just needs to be replaced with an admin
+  #        being able to fill in the part number when the part is first made.
 
   # Assigns a part number based on the parent and type and returns a new Part object.
   def self.generate_number_and_create(project, type, parent_part)

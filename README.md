@@ -1,11 +1,11 @@
-Cheesy Parts
+Phoenix Racing Fabrication
 ============
 
-Cheesy Parts is a web-based system for tracking parts through the design and manufacture cycle. It assigns
-part numbers with which CAD files can be saved to version control and stores information about parts'
-current manufacturing status.
+Phoenix Racing Fabrication is a web-based system for tracking parts through the manufacturing cycle. It
+stores information about parts' current manufacturing status and allows users to claim parts and complete
+different steps in the manufacturing process.
 
-Cheesy Parts is written in Ruby using the [Sinatra](http://sinatrarb.com) framework and uses MySQL as the
+Phoenix Fab is written in Ruby using the [Sinatra](http://sinatrarb.com) framework and uses MySQL as the
 backing datastore. Development and production are run on UNIX (OS X and Ubuntu), so there are no guarantees
 it'll work on Windows, sorry.
 
@@ -17,23 +17,26 @@ Prerequisites:
 * [Bundler](http://gembundler.com)
 * MySQL
 
-To run Cheesy Parts locally:
+To run Phoenix Fab locally:
 
 1. Create an empty MySQL database and a user account with full permissions on it.
 1. Populate `config/environment.rb` with the parameters for the development environment. This file is
 overwritten on deploy with the parameters in the Rakefile, so it's okay to set the development values in it
 and then forget about it.
-1. Run `bundle install`. This will download and install the gems that Cheesy Parts depends on.
+1. Run `bundle install`. This will download and install the gems that Phoenix Fab depends on.
 1. Run `bundle exec rake db:migrate`. This will run the database migrations to create the necessary tables in
 MySQL.
-1. Run `ruby parts_server_control.rb <command>` to control the running of the Cheesy Parts server, where
+1. Run `ruby parts_server_control.rb <command>` to control the running of the Phoenix Fab server, where
 `<command>` can be one of `start`|`stop`|`run`|`restart`.
 
-The database migration will create an admin account (username "deleteme@team254.com", password "chezypofs")
+The database migration will create an admin account (username "deleteme@phoenix.com", password "baja")
 that you can use to first get into the system and create other accounts. It is highly recommended that you
 delete this account after having created your own admin account.
 
 ## Deployment
+
+OLIN BAJA ECE HAS NOT GOTTEN TO HERE YET. The following instructions have not been tested and may not work
+correctly.
 
 The Cheesy Parts codebase includes [Fezzik](https://github.com/dmacdougall/fezzik) scripts for deploying to
 a remote server via SSH. To deploy:
