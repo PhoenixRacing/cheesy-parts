@@ -41,21 +41,8 @@ class Part < Sequel::Model
 
 
 
-### FIXME: Here is the part generation stuff, this just needs to be replaced with an admin
-	#				being able to fill in the part number when the part is first made.
 
-	# Assigns a part number based on the parent and type and returns a new Part object.
 	def self.generate_number_and_create(project, type, parent_part, part_number)
-		# parent_part_id = parent_part.nil? ? 0 : parent_part.id
-		# parent_part_number = parent_part.nil? ? 0 : parent_part.part_number
-		# if type == "part"
-		#	 part_number = Part.filter(:project_id => project.id, :parent_part_id => parent_part_id, :type => "part")
-		#										 .max(:part_number) || parent_part_number
-		#	 part_number += 1
-		# else
-		#	 part_number = Part.filter(:project_id => project.id, :type => "assembly").max(:part_number)	|| -100
-		#	 part_number += 100
-		# end
 		new(:part_number => part_number, :project_id => project.id, :type => type,
 				:parent_part_id => parent_part.nil? ? 0 : parent_part.id)
 	end

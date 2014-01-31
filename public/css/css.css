@@ -4,8 +4,9 @@ label {
 .label {
 	cursor: default;
 }
-.label-status-designing {
-	background-color: #38e;
+
+.label-status-green{
+	background-color: #0DA60D;
 }
 .label-status-material {
 	background-color: #f77;

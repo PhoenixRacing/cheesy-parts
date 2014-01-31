@@ -1,0 +1,32 @@
+TODO:
+
+1. Create Component
+	+ Due Date
+	+ Name
+	+ Number
+	+ Owner
+	+ Priority
+	+ List of subcomponents
+	* Assembly
+	* Part
+		+ List of steps remaining
+		+ List of steps completed
+
+2. Component creation interface
+
+3. Check email formatting
+
+4. Dashboard revisions:
+	- List of part status
+	+ Part Queue
+		+ Completed manufacturing step
+
+5. Edit Component interface
+	+ Ability to revert manufacturing steps
+	+ Ability to change to 'rework'
+
+6. Edit order interface
+	+ Vendor P/N
+	+ Vendor Link
+	+ Ability to have many items in one "order"
+	+ Tracking info
