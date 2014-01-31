@@ -12,10 +12,10 @@ Sequel.extension :migration
 
 # Task for executing any pending database schema changes.
 namespace :db do
-  task :migrate do
-    require "db"
-    Sequel::Migrator.run(DB, "db/migrations")
-  end
+	task :migrate do
+		require "db"
+		Sequel::Migrator.run(DB, "db/migrations")
+	end
 end
 
 include Fezzik::DSL
@@ -33,16 +33,16 @@ set :user, "ubuntu"
 
 # FIXME: Same thing, needs our settings
 Fezzik.destination :prod do
-  # Fill in parameters for deployment host, database and e-mail account here.
-  set :domain, "#{user}@parts.team254.com"
-  env :port, 9000
-  env :db_host, "localhost"
-  env :db_user, "team254"
-  env :db_password, "correcthorsebatterystaple"
-  env :db_database, "cheesy_parts"
-  env :url, "http://parts.team254.com"
-  env :gmail_user, "cheesyparts@gmail.com"
-  env :gmail_password, "correcthorsebatterystaple"
-  env :wordpress_auth_url, ""
-  env :logout_url, "http://team254.com"
+	# Fill in parameters for deployment host, database and e-mail account here.
+	set :domain, "#{user}@parts.team254.com"
+	env :port, 9000
+	env :db_host, "localhost"
+	env :db_user, "team254"
+	env :db_password, "correcthorsebatterystaple"
+	env :db_database, "cheesy_parts"
+	env :url, "http://parts.team254.com"
+	env :gmail_user, "cheesyparts@gmail.com"
+	env :gmail_password, "correcthorsebatterystaple"
+	env :wordpress_auth_url, ""
+	env :logout_url, "http://team254.com"
 end

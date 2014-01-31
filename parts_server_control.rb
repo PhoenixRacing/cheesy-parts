@@ -12,7 +12,7 @@ require "pathological"
 require "thin"
 
 Daemons.run_proc("parts_server", :monitor => true) do
-  require "parts_server"
+	require "parts_server"
 
-  Thin::Server.start("0.0.0.0", PORT, PhoenixParts::Server)
+	Thin::Server.start("0.0.0.0", PORT, PhoenixParts::Server)
 end

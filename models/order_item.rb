@@ -7,10 +7,10 @@
 # Represents a line item in an order from a vendor.
 
 class OrderItem < Sequel::Model
-  many_to_one :order
-  many_to_one :project
+	many_to_one :order
+	many_to_one :project
 
-  def total_cost
-    unit_cost * quantity
-  end
+	def total_cost
+		unit_cost * quantity
+	end
 end

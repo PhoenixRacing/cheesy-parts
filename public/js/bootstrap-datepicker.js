@@ -210,7 +210,7 @@
 				clsName = this.onRender(prevMonth);
 				prevY = prevMonth.getFullYear();
 				prevM = prevMonth.getMonth();
-				if ((prevM < month &&  prevY === year) ||  prevY < year) {
+				if ((prevM < month &&	prevY === year) ||	prevY < year) {
 					clsName += ' old';
 				} else if ((prevM > month && prevY === year) || prevY > year) {
 					clsName += ' new';
