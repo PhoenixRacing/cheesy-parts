@@ -8,6 +8,72 @@ label {
 .label-status-green{
 	background-color: #0DA60D;
 }
+
+.label-status-mill{
+	background-color: #FFFF00;
+}
+
+.label-status-cncmill{
+	background-color: #FF0000;
+}
+
+.label-status-lathe{
+	background-color: #FFFF00;
+}
+
+.label-status-cnclathe{
+	background-color: #FF0000;
+}
+
+.label-status-welding{
+	background-color: #FF0000;
+}
+
+.label-status-paint{
+	background-color: #FFFF00;
+}
+
+.label-status-sand{
+	background-color: #FFFF00;
+}
+
+.label-status-layup{
+	background-color: #FFFF00;
+}
+
+.label-status-bend{
+	background-color: #FFFF00;
+}
+
+.label-status-thermo{
+	background-color: #FFFF00;
+}
+
+.label-status-notch{
+	background-color: #0DA60D;
+}
+
+.label-status-laser{
+	background-color: #FF0000;
+}
+
+.label-status-assembly{
+	background-color: #BF00BF;
+}
+
+.label-status-progress{
+	background-color: #BF00BF;
+}
+
+.label-status-done{
+	background-color: #000000;
+}
+
+.label-status-rework{
+	background-color: #FF9D00;
+}
+
+/*
 .label-status-material {
 	background-color: #f77;
 }
@@ -52,7 +118,7 @@ label {
 }
 .label-status-open {
 	background-color: #0bb;
-}
+}*/
 .dashboard-label {
 	padding: 2px 4px;
 	color: #ffffff;
