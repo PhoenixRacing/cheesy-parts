@@ -10,7 +10,7 @@ class Part < Sequel::Model
 	many_to_one :project
 	many_to_one :parent_part, :class => self
 	one_to_many :child_parts, :key => :parent_part_id, :class => self
-
+	
 	PART_TYPES = ["part", "assembly"]
 
 	# The list of possible part statuses. Key: string stored in database, value: what is displayed to the user.
@@ -33,19 +33,45 @@ class Part < Sequel::Model
 					"progress"	=> "Assembly in Progress",
 					"done"		=> "Done",
 					"rework"	=> "Rework"}
+	STATUS_MAP.default = "Invalid Status"
 
 	# Mapping of priority integer stored in database to what is displayed to the user.
 	PRIORITY_MAP = { 0 => "High", 1 => "Normal", 2 => "Low" }
 
-	
+	# FAB_STEPS_COMPLETED = []
+	# FAB_STEPS_REMAINING = []
 
 
-
-
-	def self.generate_number_and_create(project, type, parent_part, part_number)
-		new(:part_number => part_number, :project_id => project.id, :type => type,
+	# Cration of the part
+	def self.create_part(project, type, parent_part, part_number, fab_steps)
+		new(:fab_steps => fabsteps_remaining, :part_number => part_number, :project_id => project.id, :type => type,
 				:parent_part_id => parent_part.nil? ? 0 : parent_part.id)
 	end
+
+	def get_next_step
+		#return next step
+	end
+
+	def rework_part
+		#change current status to rework by adding it to the front of remaining steps		
+	end
+
+	def complete_next_step
+		#move the next step over
+	end
+
+	def reset_steps
+		#reset all of the steps
+	end
+
+	def completed_steps
+		@fabsteps_completed.split(/,/)
+	end
+
+	def remaining_steps
+		@fabsteps_remaining.split(/,/)
+	end
+
 
 	def full_part_number
 		part_number

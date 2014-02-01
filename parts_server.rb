@@ -201,6 +201,7 @@ module PhoenixParts
 			halt(400, "Missing part number.") if params[:number].nil? || params[:number].empty?
 			halt(400, "Invalid part number.") if params[:number] !~ /^\d{2}[BDESF]-[12][01]\d{3}$/
 			# halt(400, "Duplicate part number.") if params[:number]
+			halt(400, "Invalid Fab List.") if params[:fablist].nil? || params[:fablist].empty?
 			if params[:parent_part_id] && params[:parent_part_id] !~ /^\d+$/
 				halt(400, "Invalid parent part ID.")
 			end
@@ -215,9 +216,9 @@ module PhoenixParts
 				halt(400, "Invalid parent part.") if parent_part.nil?
 			end
 
-			part = Part.generate_number_and_create(project, params[:type], parent_part, params[:number])
+			part = Part.create_part(project, params[:type], parent_part, params[:number], params[:fablist])
 			part.name = params[:name].gsub("\"", "&quot;")
-			part.status = "designing"
+			part.status = "green"
 			part.source_material = ""
 			part.have_material = 0
 			part.quantity = ""

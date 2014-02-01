@@ -4,13 +4,26 @@
 	<h2>Create New <%= @type.capitalize %></h2>
 	<form action="/parts" method="POST">
 		<input type=hidden name=type value="<%= @type %>" />
+		
 		<label>Project</label>
 		<input type="text" disabled value="<%= @project.name %>" />
 		<input type="hidden" name="project_id" value="<%= @project.id %>" />
+		
 		<label><%= @type.capitalize %> Name</label>
 		<input type="text" name="name" />
+		
 		<label><%= @type.capitalize %> Number</label>
 		<input type="text" name="number" />
+		
+		<label>Fabrication Steps</label>
+		<select name="fablist">
+			<% Part::STATUS_MAP.each_pair do |key, value| %>
+				<option value="<%= key %>">
+					<%= value %>
+				</option>
+			<% end %>
+		</select>
+
 		<label>Parent Assembly</label>
 		<select name="parent_part_id">
 			<% @project.parts.select { |p| p.type == "assembly"}.each do |part| %>
