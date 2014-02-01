@@ -344,14 +344,14 @@ module PhoenixParts
 			@user_edit.enabled = (params[:enabled] == "on") ? 1 : 0
 			if @user_edit.enabled == 1 && old_enabled == 0
 				email_body = <<-EOS.dedent
-					Hello #{@user_edit.first_name},
+Hello #{@user_edit.first_name},
 
-					Your account on Phoenix Fab has been approved.
-					You can log into the system at #{URL}.
+Your account on Phoenix Fab has been approved.
+You can log into the system at #{URL}.
 
-					Cheers,
+Cheers,
 
-					The Phoenix Racing Robot
+The Phoenix Racing Robot
 				EOS
 				send_email(@user_edit.email, "Account approved", email_body)
 			end
@@ -406,16 +406,16 @@ module PhoenixParts
 			user.set_password(params[:password])
 			user.save
 			email_body = <<-EOS.dedent
-				Hello,
+Hello,
 
-				This is a notification that #{user.first_name} #{user.last_name} has created an account on Phoenix Fab
-				 and it is disabled pending approval.
+This is a notification that #{user.first_name} #{user.last_name} has created an account on Phoenix Fab
+ and it is disabled pending approval.
 				
-				Please visit the user control panel at #{URL}/users to take action.
+Please visit the user control panel at #{URL}/users to take action.
 
-				Cheers,
+Cheers,
 
-				The Phoenix Racing Robot
+The Phoenix Racing Robot
 			EOS
 			send_email(GMAIL_USER, "Approval needed for #{user.email}", email_body)
 			erb :register_confirmation
