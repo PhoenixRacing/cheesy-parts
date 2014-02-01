@@ -218,7 +218,6 @@ module PhoenixParts
 
 			part = Part.create_part(project, params[:type], parent_part, params[:number], params[:fablist])
 			part.name = params[:name].gsub("\"", "&quot;")
-			part.status = "green"
 			part.source_material = ""
 			part.have_material = 0
 			part.quantity = ""

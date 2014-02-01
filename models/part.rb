@@ -44,16 +44,13 @@ class Part < Sequel::Model
 
 	# Cration of the part
 	def self.create_part(project, type, parent_part, part_number, fab_steps)
-		new(:fab_steps => fabsteps_remaining, :part_number => part_number, :project_id => project.id, :type => type,
+		new(:fabsteps_remaining => fab_steps, :part_number => part_number, :project_id => project.id, :type => type,
 				:parent_part_id => parent_part.nil? ? 0 : parent_part.id)
 	end
-
-	def get_next_step
-		#return next step
-	end
-
+	
+	#change current status to rework by adding it to the front of remaining steps		
 	def rework_part
-		#change current status to rework by adding it to the front of remaining steps		
+		@fabsteps_remaining = "rework," + @fabsteps_remaining
 	end
 
 	def complete_next_step
@@ -65,13 +62,20 @@ class Part < Sequel::Model
 	end
 
 	def completed_steps
-		@fabsteps_completed.split(/,/)
+		if fabsteps_completed.nil?
+			return ''
+		else
+			return fabsteps_completed.split(/,/)
+		end
 	end
 
 	def remaining_steps
-		@fabsteps_remaining.split(/,/)
+		if fabsteps_remaining.nil?
+			return ''
+		else
+			return fabsteps_remaining.split(/,/)
+		end
 	end
-
 
 	def full_part_number
 		part_number

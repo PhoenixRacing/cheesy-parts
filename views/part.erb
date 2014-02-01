@@ -32,9 +32,9 @@
 		</tr>
 		<tr><td><b>Part Number</b></td><td><%= @part.full_part_number %></td></tr>
 		<tr>
-			<td><b>Status</b></td>
+			<td><b>Current Step</b></td>
 			<td>
-				<span class="label label-status-<%= @part.status %>"><%= Part::STATUS_MAP[@part.status] %></span>
+				<span class="label label-status-<%= @part.remaining_steps[0] %>"><%= Part::STATUS_MAP[@part.remaining_steps[0]] %></span>
 			</td>
 		</tr>
 		<tr><td><b>Notes</b></td><td><%= (@part.notes || "").gsub("\n", "<br />") %></td></tr>
