@@ -10,7 +10,7 @@ label {
 }
 
 .label-status-mill{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-cncmill{
@@ -18,7 +18,7 @@ label {
 }
 
 .label-status-lathe{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-cnclathe{
@@ -30,23 +30,23 @@ label {
 }
 
 .label-status-paint{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-sand{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-layup{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-bend{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-thermo{
-	background-color: #FFFF00;
+	background-color: #FAE01E;
 }
 
 .label-status-notch{
