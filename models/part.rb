@@ -50,15 +50,33 @@ class Part < Sequel::Model
 	
 	#change current status to rework by adding it to the front of remaining steps		
 	def rework_part
-		@fabsteps_remaining = "rework," + @fabsteps_remaining
+		list_r = fabsteps_remaining.split(/,/)
+
+		if list_r[0] != "rework"
+			list_r.unshift "rework"  
+
+		fabsteps_remaining = list_r.join(",")	
 	end
 
 	def complete_next_step
-		#move the next step over
+		list_r = fabsteps_remaining.split(/,/)
+		list_c = fabsteps_completed.split(/,/)
+
+		list_c = list_c << list_r.shift
+
+		fabsteps_completed = list_c.join(",")
+		fabsteps_remaining = list_r.join(",")
 	end
 
 	def reset_steps
-		#reset all of the steps
+		list_r = fabsteps_remaining.split(/,/)
+		list_c = fabsteps_completed.split(/,/)
+
+		list_r.delete "rework"
+		list_c.concat list_r
+
+		fabsteps_completed = ""
+		fabsteps_remaining = list_c.join(",")
 	end
 
 	def completed_steps
