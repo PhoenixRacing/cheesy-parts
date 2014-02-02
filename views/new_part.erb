@@ -16,13 +16,18 @@
 		<input type="text" name="number" />
 		
 		<label>Fabrication Steps</label>
-		<select name="fablist">
+		<select id="fablist_choices" name="fablist_choices">
 			<% Part::STATUS_MAP.each_pair do |key, value| %>
 				<option value="<%= key %>">
 					<%= value %>
 				</option>
 			<% end %>
 		</select>
+		<a id="add" class="btn btn-success" onclick="addFabStep()">Add</a>
+		<div id="fablist_show">
+			This is a test
+		</div>
+		<input id="fablist" name="fablist" type="text" placeholder="Add a step" readonly>
 
 		<label>Parent Assembly</label>
 		<select name="parent_part_id">
