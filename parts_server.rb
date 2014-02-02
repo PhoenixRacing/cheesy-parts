@@ -291,6 +291,12 @@ module PhoenixParts
 			redirect params[:referrer] || "/projects/#{project_id}"
 		end
 
+		get "/parts/:id/claim" do
+			@part = Part[params[:id]]
+			@part.claim(@user)
+			redirect "/projects/#{@part.project_id}"
+		end
+
 		get "/new_user" do
 			require_permission(@user.can_administer?)
 			@admin_new_user = true

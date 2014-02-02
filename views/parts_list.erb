@@ -20,16 +20,20 @@
 				<% end %>
 			</td>
 			<td><span class="label label-status-<%= part.remaining_steps[0] %>"><%= Part::STATUS_MAP[part.remaining_steps[0]] %></span></td>
+			<td>
 			<% if @user.can_edit? %>
-				<td>
-					<a href="/parts/<%= part.id %>/edit" class="btn btn-primary btn-small">
-						<i class="icon-white icon-pencil"></i>
-					</a>
-					<a href="/parts/<%= part.id %>/delete" class="btn btn-danger btn-small">
-						<i class="icon-white icon-trash"></i>
-					</a>
-				</td>
+				<a href="/parts/<%= part.id %>/edit" class="btn btn-primary btn-small">
+					<i class="icon-white icon-pencil"></i>
+				</a>
+				<a href="/parts/<%= part.id %>/delete" class="btn btn-danger btn-small">
+					<i class="icon-white icon-trash"></i>
+				</a>
 			<% end %>
+			<a href="<% if !part.claimed? %>/parts/<%= part.id %>/claim<% else %>#<% end %>" class="btn <% if !part.claimed? %>btn-success<% end %> btn-small">
+				<i class="<% if !part.claimed? %>icon-white<% end %> icon-wrench"></i>
+			</a>
+			</td>
+
 		</tr>
 	<% end %>
 </table>

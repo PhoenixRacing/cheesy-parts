@@ -8,6 +8,7 @@
 
 class Part < Sequel::Model
 	many_to_one :project
+	many_to_one :user
 	many_to_one :parent_part, :class => self
 	one_to_many :child_parts, :key => :parent_part_id, :class => self
 	
@@ -53,7 +54,8 @@ class Part < Sequel::Model
 		list_r = fabsteps_remaining.split(/,/)
 
 		if list_r[0] != "rework"
-			list_r.unshift "rework"  
+			list_r.unshift "rework"
+		end  
 
 		fabsteps_remaining = list_r.join(",")	
 	end
@@ -97,5 +99,21 @@ class Part < Sequel::Model
 
 	def full_part_number
 		part_number
+	end
+
+	def claim(user)
+		self.user_id = user.id
+		save
+	end
+
+	def release(user)
+		if user.id == user_id or user.can_administer?
+			self.user_id = nil
+			save
+		end
+	end
+
+	def claimed?
+		return !user_id.nil?
 	end
 end

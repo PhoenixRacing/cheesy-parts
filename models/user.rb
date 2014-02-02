@@ -11,6 +11,8 @@ require "openssl"
 require "securerandom"
 
 class User < Sequel::Model
+	one_to_many :parts
+
 	PBKDF2_ITERATIONS = 1000
 	HASH_BYTES = 24
 	SALT_BYTES = 24
