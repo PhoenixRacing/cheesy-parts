@@ -39,7 +39,11 @@
 		</tr>
 		<tr>
 			<td><b>Claimed By</b></td>
-			<td><%= User[:id => @part.user_id].first_name + " " + User[:id => @part.user_id].last_name %></td>
+			<% if @part.claimed? %>
+				<td><%= User[:id => @part.user_id].first_name + " " + User[:id => @part.user_id].last_name %></td>
+			<% else %>
+				<td>Unclaimed</td>
+			<% end %>	
 		</tr>
 		<tr><td><b>Notes</b></td><td><%= (@part.notes || "").gsub("\n", "<br />") %></td></tr>
 		<% if @part.type == "part" %>
@@ -59,6 +63,14 @@
 			<a href="/parts/<%= @part.id %>/delete" class="btn btn-danger btn-small">
 				<i class="icon-white icon-trash"></i> Delete this part
 			</a>
+			<% if @part.user_id == @user.id || @user.can_administer? %>
+				<a href="/parts/<%= @part.id %>/release" class="btn btn-success btn-small">
+					<i class="icon-white icon-wrench"></i> Release this part
+				</a>
+				<a href="/parts/<%= @part.id %>/rework" class="btn btn-warning btn-small">
+					<i class="icon-white icon-exclamation-sign"></i> Mark for rework
+				</a>	
+			<% end %>
 		</div>
 	<% end %>
 </div>

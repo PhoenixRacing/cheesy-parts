@@ -297,6 +297,31 @@ module PhoenixParts
 			redirect "/projects/#{@part.project_id}"
 		end
 
+		get "/parts/:id/release" do
+			@part = Part[params[:id]]
+			@part.release(@user)
+			redirect "/projects/#{@part.project_id}"
+		end
+
+		get "/parts/:id/rework" do
+			@part = Part[params[:id]]
+			@part.rework_part
+			email_body = <<-EOS.dedent
+
+Hello,
+
+This is a notice that #{@part.name} has been tagged for rework by #{@user.first_name} #{@user.last_name}.
+
+Cheers,
+
+The Phoenix Racing Robot
+			EOS
+			send_email(GMAIL_USER, "Part tagged for Rework", email_body)
+
+
+			redirect "/projects/#{@part.project_id}"
+		end
+
 		get "/new_user" do
 			require_permission(@user.can_administer?)
 			@admin_new_user = true
