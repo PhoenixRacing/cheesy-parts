@@ -58,8 +58,7 @@ class Part < Sequel::Model
 			list_r.unshift "rework"
 		end
 
-		self.fabsteps_remaining = list_r.join(",")	
-		puts fabsteps_remaining
+		self.fabsteps_remaining = list_r.join(",")
 		save
 
 	end

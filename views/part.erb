@@ -55,24 +55,32 @@
 		<tr><td><b>Drawing created?</b></td><td><%= (@part.drawing_created == 1) ? "Yes" : "No" %></td></tr>
 		<tr><td><b>Priority</b></td><td><%= Part::PRIORITY_MAP[@part.priority] %></td></tr>
 	</table>
-	<% if @user.can_edit? %>
-		<div class="pull-right" style="margin-top: -40px;">
+	<div class="pull-right" style="margin-top: -40px;">
+		<% if @user.can_edit? %>
 			<a href="/parts/<%= @part.id %>/edit" class="btn btn-primary btn-small">
 				<i class="icon-white icon-pencil"></i> Edit this part
 			</a>
 			<a href="/parts/<%= @part.id %>/delete" class="btn btn-danger btn-small">
 				<i class="icon-white icon-trash"></i> Delete this part
 			</a>
-			<% if @part.user_id == @user.id || @user.can_administer? %>
-				<a href="/parts/<%= @part.id %>/release" class="btn btn-success btn-small">
-					<i class="icon-white icon-wrench"></i> Release this part
-				</a>
-				<a href="/parts/<%= @part.id %>/rework" class="btn btn-warning btn-small">
-					<i class="icon-white icon-exclamation-sign"></i> Mark for rework
-				</a>	
-			<% end %>
-		</div>
-	<% end %>
+		<% end %>
+		<% if @part.user_id == @user.id || @user.can_administer? %>
+			<a href="/parts/<%= @part.id %>/release" class="btn btn-success btn-small">
+				<i class="icon-white icon-wrench"></i> Release this part
+			</a>
+			<a href="/parts/<%= @part.id %>/rework" class="btn btn-warning btn-small">
+				<i class="icon-white icon-exclamation-sign"></i> Mark for rework
+			</a>	
+			<a href="/parts/<%= @part.id %>/complete" class="btn btn-primary btn-small">
+				<i class="icon-white icon-step-forward"></i> Completed Step
+			</a>	
+		<% end %>
+		<% if @user.can_administer? %>
+			<a href="/parts/<%= @part.id %>/reset" class="btn btn-danger btn-small">
+				<i class="icon-white icon-fast-backward"></i> Reset Fab List
+			</a>
+		<% end %>
+	</div>
 </div>
 
 <%= erb :footer %>

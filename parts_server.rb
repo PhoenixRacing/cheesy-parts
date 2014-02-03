@@ -322,6 +322,20 @@ The Phoenix Racing Robot
 			redirect "/projects/#{@part.project_id}"
 		end
 
+		get "/parts/:id/complete" do
+			@part = Part[params[:id]]
+			@part.complete_next_step
+			@part.release(@user)
+			redirect "/projects/#{@part.project_id}"
+		end		
+
+		get "/parts/:id/reset" do
+			@part = Part[params[:id]]
+			@part.reset_steps
+			@part.release(@user)
+			redirect "/projects/#{@part.project_id}"
+		end	
+
 		get "/new_user" do
 			require_permission(@user.can_administer?)
 			@admin_new_user = true
