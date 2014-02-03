@@ -199,7 +199,7 @@ module PhoenixParts
 			halt(400, "Invalid part type.") unless Part::PART_TYPES.include?(params[:type])
 			halt(400, "Missing part name.") if params[:name].nil? || params[:name].empty?
 			halt(400, "Missing part number.") if params[:number].nil? || params[:number].empty?
-			halt(400, "Invalid part number.") if params[:number] !~ /^\d{2}[BDESF]-[12][01]\d{3}$/
+			halt(400, "Invalid part number.") if params[:number] !~ /^\d{2}[BDESF]-[012][01]\d{3}$/ && params[:number] !~ /^\d{2}[F][C][C]$/
 			# halt(400, "Duplicate part number.") if params[:number]
 			halt(400, "Invalid Fab List.") if params[:fablist].nil? || params[:fablist].empty?
 			if params[:parent_part_id] && params[:parent_part_id] !~ /^\d+$/

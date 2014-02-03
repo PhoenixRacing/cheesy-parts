@@ -64,7 +64,6 @@ function addFabStep(){
 	$("#fablist_choices option").each( function() {
 		fabmap[$(this).val()] = $(this)[0].label;
 	});
-	console.log(fabmap);
 
 	// update #fablist
 	if ($("#fablist").val().length > 0){
@@ -75,7 +74,6 @@ function addFabStep(){
 		key_list = [];
 	}
 	key_list.push($('#fablist_choices').val());
-	console.log(key_list);
 	$("#fablist").val(key_list.join(','));
 
 	// update #fablist_show
@@ -85,8 +83,6 @@ function addFabStep(){
 	}
 
 	// other
-	console.log($.trim($('#fablist_choices option:selected').text()));
-	console.log($('#fablist_choices').val());
 }
 
 $(function() {
