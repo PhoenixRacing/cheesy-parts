@@ -5,7 +5,7 @@
 	<title>Phoenix Racing Fabrication</title>
 
 	<!-- FIXME: Need a favicon when we deploy -->
-	<link rel="shortcut icon" href="http://media.team254.com/homepage/icons/favicon32.png">
+	<link rel="shortcut icon" href="/views/img/favicon.ico">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-datepicker.css" rel="stylesheet">
 	<link href='/css/css.css' rel='stylesheet' type='text/css' />
@@ -39,10 +39,10 @@
 							<li>
 								<a href="/dashboards"> <i class="icon-list-alt icon-black"></i> Dashboards</a>
 							</li>
-							<li>
-								<a href="/orders"> <i class="icon-shopping-cart icon-black"></i> Orders</a>
-							</li>
 							<% if @user.can_administer? %>
+								<li>
+									<a href="/orders"> <i class="icon-shopping-cart icon-black"></i> Orders</a>
+								</li>
 								<li>
 									<a href="/users"> <i class="icon-th-list icon-black"></i> Users</a>
 								</li>

@@ -59,6 +59,7 @@ class Part < Sequel::Model
 		end
 
 		self.fabsteps_remaining = list_r.join(",")
+		self.status = "rework"
 		save
 
 	end
@@ -71,6 +72,7 @@ class Part < Sequel::Model
 
 		self.fabsteps_completed = list_c.join(",")
 		self.fabsteps_remaining = list_r.join(",")
+		self.status = list_r[0]
 		save
 	end
 
@@ -83,6 +85,7 @@ class Part < Sequel::Model
 
 		self.fabsteps_completed = ""
 		self.fabsteps_remaining = list_c.join(",")
+		self.status = list_c[0]
 		save
 	end
 

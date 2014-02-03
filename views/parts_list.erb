@@ -30,7 +30,7 @@
 				</a>
 			<% end %>
 			<a href="<% if !part.claimed? %>/parts/<%= part.id %>/claim<% else %>#<% end %>" class="btn <% if !part.claimed? %>btn-success<% end %> btn-small">
-				<i class="<% if !part.claimed? %>icon-white<% end %> icon-wrench"></i>
+				<i class="<% if !part.claimed? %>icon-white<% end %> icon-wrench"></i><% if !part.claimed? %> Claim Part<% else %> Claimed<% end %>
 			</a>
 			</td>
 

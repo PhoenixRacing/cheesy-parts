@@ -224,6 +224,7 @@ module PhoenixParts
 			part.cut_length = ""
 			part.priority = 1
 			part.drawing_created = 0
+			part.status = params[:fablist].split(/,/)[0]
 			part.save
 			redirect "/parts/#{part.id}"
 		end
