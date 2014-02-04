@@ -37,6 +37,14 @@ label {
 	background-color: #FAE01E;
 }
 
+.label-status-cncrouter{
+  	background-color: #FF0000;
+}
+
+.label-status-rasp{
+  	background-color: #0DA60D;
+}
+
 .label-status-layup{
 	background-color: #FAE01E;
 }

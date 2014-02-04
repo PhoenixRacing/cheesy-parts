@@ -174,7 +174,7 @@ module PhoenixParts
 
 		get "/projects/:id/dashboard/parts" do
 			@status = params[:status] if Part::STATUS_MAP.has_key?(params[:status])
-			erb :dashboard_parts
+			erb :dashboard_parts_unclaimed
 		end
 
 		get "/projects/:id/new_part" do
@@ -295,13 +295,13 @@ module PhoenixParts
 		get "/parts/:id/claim" do
 			@part = Part[params[:id]]
 			@part.claim(@user)
-			redirect "/projects/#{@part.project_id}"
+			redirect "/parts/#{@part.id}"
 		end
 
 		get "/parts/:id/release" do
 			@part = Part[params[:id]]
 			@part.release(@user)
-			redirect "/projects/#{@part.project_id}"
+			redirect "/parts/#{@part.id}"
 		end
 
 		get "/parts/:id/rework" do
@@ -327,14 +327,14 @@ The Phoenix Racing Robot
 			@part = Part[params[:id]]
 			@part.complete_next_step
 			@part.release(@user)
-			redirect "/projects/#{@part.project_id}"
+			redirect "/parts/#{@part.id}"
 		end		
 
 		get "/parts/:id/reset" do
 			@part = Part[params[:id]]
 			@part.reset_steps
 			@part.release(@user)
-			redirect "/projects/#{@part.project_id}"
+			redirect "/parts/#{@part.id}"
 		end	
 
 		get "/new_user" do
