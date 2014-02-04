@@ -255,6 +255,12 @@ module PhoenixParts
 			require_permission(@user.can_edit?)
 
 			@part = Part[params[:id]]
+			@project = Project[params[:project_id]]
+
+			puts "hello"
+			puts @project.id
+			puts "Goodbye"
+
 			halt(400, "Invalid part.") if @part.nil?
 			halt(400, "Missing part name.") if params[:name] && params[:name].empty?
 			@part.name = params[:name].gsub("\"", "&quot;") if params[:name]
@@ -270,6 +276,8 @@ module PhoenixParts
 			@part.drawing_created = (params[:drawing_created] == "on") ? 1 : 0
 			@part.priority = params[:priority] if params[:priority]
 			@part.save
+			metric = Metric.log_event(@project, @part, @user, "edit part")
+			metric.save
 			redirect params[:referrer] || "/parts/#{params[:id]}"
 		end
 
@@ -290,6 +298,8 @@ module PhoenixParts
 			halt(400, "Invalid part.") if @part.nil?
 			halt(400, "Can't delete assembly with existing children.") unless @part.child_parts.empty?
 			@part.delete
+			metric = Metric.log_event(@project, @part, @user, "deleted part")
+			metric.save
 			params[:referrer] = nil if params[:referrer] =~ /\/parts\/#{params[:id]}$/
 			redirect params[:referrer] || "/projects/#{project_id}"
 		end
