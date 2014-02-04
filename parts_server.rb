@@ -226,6 +226,8 @@ module PhoenixParts
 			part.drawing_created = 0
 			part.status = params[:fablist].split(/,/)[0]
 			part.save
+			metric = Metric.log_event(project, part, @user, "created part")
+			metric.save
 			redirect "/parts/#{part.id}"
 		end
 

@@ -6,18 +6,18 @@
 #  throughout the fab season. This will be processed later
 #  to determine fab stats.
 
-class Metric < Sequel::model
+class Metric < Sequel::Model
 
 	def self.log_event(project, part, user, action)
-		new(:project_id 	=> project.id
-			:project_name	=> project.name
-			:part_id 		=> part.id
-			:part_number	=> part.part_number
-			:part_name 		=> part.name
-			:user_id 		=> user.id
-			:user_lastname 	=> user.last_name
-			:user_firstname => user.first_name
-			:action 		=> action
+		new(:project_id 	=> project.id,
+			:project_name	=> project.name,
+			:part_id 		=> part.id,
+			:part_number	=> part.part_number,
+			:part_name 		=> part.name,
+			:user_id 		=> user.id,
+			:user_lastname 	=> user.last_name,
+			:user_firstname => user.first_name,
+			:action 		=> action,
 			:time 			=> Time.now())
 	end
 end
