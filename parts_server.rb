@@ -226,8 +226,8 @@ module PhoenixParts
 			part.drawing_created = 0
 			part.status = params[:fablist].split(/,/)[0]
 			part.save
-			metric = Metric.log_event(project, part, @user, "created part")
-			metric.save
+			#metric = Metric.log_event(project, part, @user, "created part")
+			#metric.save
 			redirect "/parts/#{part.id}"
 		end
 
@@ -276,8 +276,8 @@ module PhoenixParts
 			@part.drawing_created = (params[:drawing_created] == "on") ? 1 : 0
 			@part.priority = params[:priority] if params[:priority]
 			@part.save
-			metric = Metric.log_event(@project, @part, @user, "edit part")
-			metric.save
+			#metric = Metric.log_event(@project, @part, @user, "edit part")
+			#metric.save
 			redirect params[:referrer] || "/parts/#{params[:id]}"
 		end
 
@@ -298,8 +298,8 @@ module PhoenixParts
 			halt(400, "Invalid part.") if @part.nil?
 			halt(400, "Can't delete assembly with existing children.") unless @part.child_parts.empty?
 			@part.delete
-			metric = Metric.log_event(@project, @part, @user, "deleted part")
-			metric.save
+			#metric = Metric.log_event(@project, @part, @user, "deleted part")
+			#metric.save
 			params[:referrer] = nil if params[:referrer] =~ /\/parts\/#{params[:id]}$/
 			redirect params[:referrer] || "/projects/#{project_id}"
 		end
