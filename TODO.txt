@@ -1,5 +1,11 @@
 TODO:
 
+BETA FEEDBACK:
+> Don't redirect on claiming a part
+> Add 'claim' button to part screen
+> Separate dashboard into my parts and unclaimed parts
+
+
 1. Create Component
 	+ Due Date
 	+ Name
