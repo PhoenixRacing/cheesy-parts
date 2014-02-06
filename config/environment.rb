@@ -4,8 +4,10 @@
 
 PORT = 9000
 DB_HOST = "localhost"
+DB_HOST = "mysql2://bb0c958fee3cfc:00a961fd@us-cdbr-east-05.cleardb.net/heroku_ef2aea1c34afa4b?reconnect=true"
 DB_USER = "phoenix"
-DB_PASSWORD = "baja"
+DB_USER = "bb0c958fee3cfc"
+DB_PASSWORD = "00a961fd"
 DB_DATABASE = "phoenix_parts"
 URL = "0.0.0.0:9000"
 GMAIL_USER = "phoenixracingfabrication@gmail.com"
