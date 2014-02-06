@@ -4,7 +4,7 @@
 
 PORT = 9000
 DB_HOST = "localhost"
-DB_HOST = "mysql2://bb0c958fee3cfc:00a961fd@us-cdbr-east-05.cleardb.net/heroku_ef2aea1c34afa4b?reconnect=true"
+DB_HOST = "us-cdbr-east-05.cleardb.net/heroku_ef2aea1c34afa4b?reconnect=true"
 DB_USER = "phoenix"
 DB_USER = "bb0c958fee3cfc"
 DB_PASSWORD = "00a961fd"
