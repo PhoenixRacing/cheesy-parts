@@ -14,6 +14,7 @@ Sequel.extension :migration
 namespace :db do
 	task :migrate do
 		require "db"
+		# Sequel::Model.plugin(:schema)
 		Sequel::Migrator.run(DB, "db/migrations")
 	end
 end
