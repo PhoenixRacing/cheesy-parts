@@ -63,33 +63,33 @@ module PhoenixParts
 
 		get "/login" do
 			return erb :login
-			# redirect "/logout" if @user
-			# @redirect = params[:redirect] || "/"
+			redirect "/logout" if @user
+			@redirect = params[:redirect] || "/"
 
-			# # unless WORDPRESS_AUTH_URL.empty?
-			# # 	# Try authenticating against Wordpress.
-			# # 	wordpress_user_info = get_wordpress_user_info
-			# # 	if wordpress_user_info
-			# # 		user = User[:wordpress_user_id => wordpress_user_info["id"]]
-			# # 		unless user
-			# # 			names = wordpress_user_info["name"].split(" ")
-			# # 			first_name = names.first
-			# # 			last_name = names[1..-1].join(" ")
-			# # 			user = User.create(:wordpress_user_id => wordpress_user_info["id"], :first_name => first_name,
-			# # 												 :last_name => last_name, :permission => "editor", :enabled => 1,
-			# # 												 :email => wordpress_user_info["username"])
-			# # 		end
-			# # 		session[:user_id] = user.id
-			# # 		redirect @redirect
-			# # 	end
-			# # end
+			unless WORDPRESS_AUTH_URL.empty?
+				# Try authenticating against Wordpress.
+				wordpress_user_info = get_wordpress_user_info
+				if wordpress_user_info
+					user = User[:wordpress_user_id => wordpress_user_info["id"]]
+					unless user
+						names = wordpress_user_info["name"].split(" ")
+						first_name = names.first
+						last_name = names[1..-1].join(" ")
+						user = User.create(:wordpress_user_id => wordpress_user_info["id"], :first_name => first_name,
+															 :last_name => last_name, :permission => "editor", :enabled => 1,
+															 :email => wordpress_user_info["username"])
+					end
+					session[:user_id] = user.id
+					redirect @redirect
+				end
+			end
 
-			# if params[:failed] == "1"
-			# 	@alert = "Invalid e-mail address or password."
-			# elsif params[:disabled] == "1"
-			# 	@alert = "Your account is currently disabled."
-			# end
-			# erb :login
+			if params[:failed] == "1"
+				@alert = "Invalid e-mail address or password."
+			elsif params[:disabled] == "1"
+				@alert = "Your account is currently disabled."
+			end
+			erb :login
 		end
 
 		post "/login" do
