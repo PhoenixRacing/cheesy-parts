@@ -2,7 +2,7 @@
 # in the Rakefile, as this file is overwritten on deploy.
 
 
-PORT = 9000
+PORT = $PORT
 DB_HOST = "localhost"
 DB_HOST = "us-cdbr-east-05.cleardb.net"#/heroku_ef2aea1c34afa4b?reconnect=true
 DB_USER = "phoenix"
