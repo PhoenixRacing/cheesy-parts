@@ -257,9 +257,9 @@ module PhoenixParts
 			@part = Part[params[:id]]
 			@project = Project[params[:project_id]]
 
-			puts "hello"
-			puts @project.id
-			puts "Goodbye"
+			# puts "hello"
+			# puts @project.id
+			# puts "Goodbye"
 
 			halt(400, "Invalid part.") if @part.nil?
 			halt(400, "Missing part name.") if params[:name] && params[:name].empty?
