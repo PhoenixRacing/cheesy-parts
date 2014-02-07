@@ -62,6 +62,7 @@ module PhoenixParts
 		end
 
 		get "/login" do
+			return erb :login
 			redirect "/logout" if @user
 			@redirect = params[:redirect] || "/"
 
