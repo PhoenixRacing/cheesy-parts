@@ -255,7 +255,7 @@ module PhoenixParts
 			require_permission(@user.can_edit?)
 
 			@part = Part[params[:id]]
-			@project = Project[params[:project_id]]
+			# @project = Project[params[:project_id]]
 
 			# puts "hello"
 			# puts @project.id
