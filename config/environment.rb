@@ -7,6 +7,7 @@ PORT = ENV["PORT"]
 DB_HOST = "us-cdbr-east-05.cleardb.net"#/heroku_ef2aea1c34afa4b?reconnect=true
 # DB_USER = "phoenix"
 DB_USER = "bb0c958fee3cfc"
+# DB_PASSWORD = "baja"
 DB_PASSWORD = "00a961fd"
 # DB_DATABASE = "phoenix_parts"
 DB_DATABASE = "heroku_ef2aea1c34afa4b"#her
