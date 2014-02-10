@@ -24,6 +24,7 @@ class Part < Sequel::Model
 					"paint"		=> "Spray Paint",
 					"sand"		=> "Sandblast",
 					"cncrouter"	=> "CNC Router",
+					"waterjet" 	=> "Waterjet",
 					"rasp"		=> "Rasp",
 					"layup"		=> "Layup",
 					"bend"		=> "Bend",
